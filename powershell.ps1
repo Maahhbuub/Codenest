@@ -1,44 +1,81 @@
 # git command shortcuts
-function add { git add . } # Stage all changes
+function add { git add . }
 
 function commit {
-    $message = $args -join " "
-    if (-not $message) { $message = "manual commit" }
-    git commit -m "$message"
-} # Commit staged changes with a message
+    # 1. Define valid types for Conventional Commits
+    $validTypes = '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore)$'
+
+    # 2. Case: No arguments provided
+    if ($args.Count -eq 0) {
+        $time = Get-Date -Format "HH:mm:ss"
+        $msg = "manual commit at $time"
+    }
+    # 3. Case: Type, Scope, and Description (3+ args) 
+    # Example: commit feat home added search bar
+    elseif ($args.Count -ge 3 -and $args[0] -match $validTypes) {
+        $type = $args[0]
+        $scope = $args[1]
+        $desc = $args[2..($args.Count - 1)] -join " "
+        $msg = "$type($scope): $desc"
+    }
+    # 4. Case: Everything else (1 or 2 args, or 3+ args that don't match a 'type')
+    # Example: commit fixed the login screen
+    else {
+        $msg = $args -join " "
+    }
+
+    # Execute the git command
+    git commit -m "$msg"
+}
 
 function save {
     git add .
-    $message = $args -join " "
-    if (-not $message) { $message = "save" }
-    git commit -m "$message"
-} # Stage all changes and commit (default: "save")
+    commit @args
+}
 
 function ship {
     git add .
-    $message = $args -join " "
-    if (-not $message) { $message = "save" }
-    git commit -m "$message"
+    commit @args
     git push
-} # Stage, commit, and push to remote
+}
 
-function push { git push } # Push commits to remote repository
+function branch {
+    if ($args.Length -eq 0) {
+        git branch
+    } else {
+        $name = $args[0]
+
+        git rev-parse --verify $name 2>$null
+        if ($LASTEXITCODE -eq 0) {
+            git switch $name
+        } else {
+            git switch -c $name
+        }
+    }
+}
+
+function push { git push }
+function pull { git pull } 
 function setup { git push -u origin HEAD } # Set upstream and push current branch
-function pull { git pull } # Pull and merge remote changes
 function fetch { git fetch origin } # Fetch remote changes without merging
-function status { git status } # Show working tree status
-function branch { git branch $args } # Manage branches (list/create/delete)
-function show { git branch } # List all local branches
-function see { git branch --show-current } # Show current branch name
-function go { git switch $args } # Switch branches
-function merge { git merge $args } # Merge another branch into current
+
+function status { git status }
+function see { git branch --show-current }
+function merge { git merge $args }
+
+function clean { git reset --hard HEAD } # Discard all uncommitted changes
+function restart { git clean -fd } # Remove untracked files and directories
+
 function reset { git reset HEAD~1 } # Undo last commit (keep changes staged)
-function restart { git reset --hard HEAD } # Discard all uncommitted changes
 function revert { git revert HEAD } # Create a new commit that undoes last commit
-function delete { git branch -d $args } # Delete local branch (safe)
-function Delete { git branch -D $args } # Force delete local branch
-function clean { git clean -fd } # Remove untracked files and directories
+
+function delete { git branch -d $args }
+function Delete { git branch -D $args }
 
 # npm command shortcuts
-function nrd { npm run dev } # Start development server
-function nes { npx expo start --clear } # Start Expo with cache cleared
+function nrd { npm run dev }
+function nes { npx expo start }
+function nrb { npm run build }
+function tunnel($port) {
+    npx cloudflared tunnel --url http://localhost:$port
+}
