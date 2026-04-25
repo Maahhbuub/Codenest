@@ -73,9 +73,10 @@ function delete { git branch -d $args }
 function Delete { git branch -D $args }
 
 # npm command shortcuts
-function nrd { npm run dev }
-function nes { npx expo start }
-function nrb { npm run build }
 function tunnel($port) {
     npx cloudflared tunnel --url http://localhost:$port
 }
+function migrate($msg) {
+    npx prisma migrate dev --name $msg
+}
+function generate { npx prisma generate }

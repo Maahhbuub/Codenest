@@ -1,51 +1,176 @@
 [
-    // Cursor movement in editor
-    {"key":"alt+i","command":"cursorUp","when":"editorTextFocus"}, // move up
-    {"key":"alt+j","command":"cursorLeft","when":"editorTextFocus"}, // move left
-    {"key":"alt+k","command":"cursorDown","when":"editorTextFocus"}, // move down
-    {"key":"alt+l","command":"cursorRight","when":"editorTextFocus"}, // move right
+    // move cursro in editor
+    {
+        "key": "alt+i",
+        "command": "cursorUp",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "cursorLeft",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "cursorDown",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+l",
+        "command": "cursorRight",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+j",
+        "command": "cursorWordLeftSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+shift+l",
+        "command": "cursorWordRightSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+shift+i",
+        "command": "cursorUpSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+shift+k",
+        "command": "cursorDownSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+;",
+        "command": "cursorEnd",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+h",
+        "command": "cursorHome",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "alt+i",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
 
-    // Selection with cursor
-    {"key":"alt+shift+j","command":"cursorWordLeftSelect","when":"textInputFocus"}, // select word left
-    {"key":"alt+shift+l","command":"cursorWordRightSelect","when":"textInputFocus"}, // select word right
-    {"key":"alt+shift+i","command":"cursorUpSelect","when":"textInputFocus"}, // select up
-    {"key":"alt+shift+k","command":"cursorDownSelect","when":"textInputFocus"}, // select down
+    // move cursors in terminal
+    {
+        "key": "alt+i",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u001b[A"
+        },
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u001b[B"
+        },
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u001b[D"
+        },
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u001b[C"
+        },
+        "when": "terminalFocus"
+    },
 
-    // Line navigation
-    {"key":"alt+;","command":"cursorEnd","when":"editorTextFocus"}, // go to end of line
-    {"key":"alt+h","command":"cursorHome","when":"editorTextFocus"}, // go to start of line
+    // Line Operations
+    {
+        "key": "alt+u",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+m",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+o",
+        "command": "scrollLineUp",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+.",
+        "command": "scrollLineDown",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+n",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+enter",
+        "command": "editor.action.insertLineBefore",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "editor.action.insertLineAfter",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+d",
+        "command": "editor.action.deleteLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+t",
+        "command": "cph.runTestCases"
+    },
+    {
+        "key": "alt+f",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "alt+a",
+        "command": "workbench.action.previousEditor"
+    },
 
-    // Suggestion navigation
-    {"key":"alt+k","command":"selectNextSuggestion","when":"suggestWidgetMultipleSuggestions && suggestWidgetVisible"}, // next suggestion
-    {"key":"alt+i","command":"selectPrevSuggestion","when":"suggestWidgetMultipleSuggestions && suggestWidgetVisible"}, // previous suggestion
-
-    // Terminal cursor movement
-    {"key":"alt+i","command":"workbench.action.terminal.sendSequence","args":{"text":"\u001b[A"},"when":"terminalFocus"}, // up
-    {"key":"alt+k","command":"workbench.action.terminal.sendSequence","args":{"text":"\u001b[B"},"when":"terminalFocus"}, // down
-    {"key":"alt+j","command":"workbench.action.terminal.sendSequence","args":{"text":"\u001b[D"},"when":"terminalFocus"}, // left
-    {"key":"alt+l","command":"workbench.action.terminal.sendSequence","args":{"text":"\u001b[C"},"when":"terminalFocus"}, // right
-
-    // Line operations
-    {"key":"alt+u","command":"editor.action.moveLinesUpAction","when":"textInputFocus"}, // move line up
-    {"key":"alt+m","command":"editor.action.moveLinesDownAction","when":"textInputFocus"}, // move line down
-    {"key":"alt+o","command":"scrollLineUp","when":"editorTextFocus"}, // scroll up
-    {"key":"alt+.","command":"scrollLineDown","when":"editorTextFocus"}, // scroll down
-    {"key":"alt+n","command":"editor.action.copyLinesDownAction","when":"editorTextFocus"}, // duplicate line
-    {"key":"alt+enter","command":"editor.action.insertLineBefore","when":"editorTextFocus"}, // insert line above
-    {"key":"ctrl+enter","command":"editor.action.insertLineAfter","when":"editorTextFocus"}, // insert line below
-    {"key":"alt+d","command":"editor.action.deleteLines","when":"editorTextFocus && !editorReadonly"}, // delete line
-
-    // Competitive programming helper
-    {"key":"alt+t","command":"cph.runTestCases"}, // run test cases
-
-    // Editor tab navigation
-    {"key":"alt+f","command":"workbench.action.nextEditor"}, // next tab
-    {"key":"alt+a","command":"workbench.action.previousEditor"}, // previous tab
-
-    // Terminal operations
-    {"key":"ctrl+alt+j","command":"workbench.action.terminal.new"}, // new terminal
-    {"key":"ctrl+tab","command":"workbench.action.terminal.focusNext","when":"terminalFocus"}, // next terminal
-    {"key":"ctrl+alt+k","command":"workbench.action.terminal.kill","when":"terminalFocus"}, // kill terminal
-    {"key":"ctrl+alt+x","command":"workbench.action.terminal.killAll","when":"terminalFocus"}, // kill all terminals
-    {"key":"ctrl+alt+m","command":"workbench.action.toggleMaximizedPanel"} // maximize terminal panel
+    // Terminal Operations
+    {
+        "key": "ctrl+alt+j",
+        "command": "workbench.action.terminal.new"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "workbench.action.terminal.kill",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+alt+x",
+        "command": "workbench.action.terminal.killAll",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+alt+m",
+        "command": "workbench.action.toggleMaximizedPanel"
+    }
 ]

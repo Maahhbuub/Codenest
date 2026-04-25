@@ -55,11 +55,11 @@ matches:
   - trigger: ",run"
     replace: 'g++ -std=c++23 -DLOCAL $|$; .\a.exe'
 
-  - trigger: ":nd"
+  - trigger: ":nrd"
     replace: "npm run dev"
 
-  - trigger: ":ns"
-    replace: "npm start"
+  - trigger: ":nes"
+    replace: "npx expo start"
 
   # emoji
   - trigger: ";l"
@@ -86,3 +86,5 @@ matches:
     replace: "🙏🙏"
   - trigger: ";Y"
     replace: "🫵🫵"
+  - trigger: ";f"
+    replace: "🐸🐸"

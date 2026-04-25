@@ -1,10 +1,10 @@
 {
     "files.autoSave": "afterDelay",
     "editor.mouseWheelZoom": true,
-    "editor.fontSize": 18,
+    "editor.fontSize": 19,
     "terminal.integrated.fontSize": 18,
-    "editor.fontFamily": "cascadia code, Consolas, 'Courier New', monospace",
-    "editor.fontWeight": "900",
+    "editor.fontFamily": "cascadia code",
+    "editor.fontWeight": "bold",
     "editor.stickyScroll.enabled": false,
     "editor.minimap.enabled": false,
     "editor.cursorBlinking": "expand",
@@ -13,16 +13,27 @@
     "terminal.integrated.enableMultiLinePasteWarning": "never",
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "github.copilot.enable": {
-        "*": false,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false
-    },
     "workbench.iconTheme": "material-icon-theme",
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "editor.formatOnPaste": true,
-    "workbench.colorTheme": "Theme Darker",
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
     "editor.cursorSmoothCaretAnimation": "on",
-    "cph.language.cpp.Args": "-std=c++23 -DLOCAL",
+    "editor.cursorWidth": 3,
+    "editor.fontLigatures": true,
+    "redhat.telemetry.enabled": true,
+    "cSpell.userWords": [
+        "Mahbub",
+        "Tamanna"
+    ],
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "explorer.confirmPasteNative": false,
+    "claudeCode.preferredLocation": "panel",
+    "chat.viewSessions.orientation": "stacked",
+    "workbench.colorTheme": "Theme Darker",
 }
