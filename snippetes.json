@@ -12,6 +12,7 @@
             "using namespace std;",
             "#define int long long int",
             "#define a(x) x.begin(), x.end()",
+            "#define d(x) x.rbegin(), x.rend()",
             "",
             "#ifdef LOCAL",
             "#include \"../debug.h\"",
@@ -33,6 +34,34 @@
             "}"
         ],
         "description": "Competitive programig template"
+    },
+    "Leetcode": {
+        "prefix": "leet",
+        "body": [
+            "#include <bits/stdc++.h>",
+            "using namespace std;",
+            "",
+            "#ifdef LOCAL",
+            "#include \"../debug.h\"",
+            "#else",
+            "#define show(...) 42",
+            "#endif",
+            "",
+            "class Solution {",
+            "public:",
+            "",
+            "};",
+            "",
+            "int main()",
+            "{   ",
+            "    $0",
+            "    Solution solution;",
+            "    ",
+            "    return 0;",
+            "}",
+            ""
+        ],
+        "description": ""
     },
     "C++ template": {
         "prefix": "cpp",

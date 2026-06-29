@@ -39,7 +39,7 @@ function ship {
     git push
 }
 
-function branch {
+function go {
     if ($args.Length -eq 0) {
         git branch
     } else {
@@ -63,8 +63,8 @@ function status { git status }
 function see { git branch --show-current }
 function merge { git merge $args }
 
-function clean { git reset --hard HEAD } # Discard all uncommitted changes
-function restart { git clean -fd } # Remove untracked files and directories
+function restore { git restore . } # Discard all uncommitted changes
+function clean { git clean -fd } # Remove untracked files and directories
 
 function reset { git reset HEAD~1 } # Undo last commit (keep changes staged)
 function revert { git revert HEAD } # Create a new commit that undoes last commit
@@ -73,9 +73,6 @@ function delete { git branch -d $args }
 function Delete { git branch -D $args }
 
 # npm command shortcuts
-function tunnel($port) {
-    npx cloudflared tunnel --url http://localhost:$port
-}
 function migrate($msg) {
     npx prisma migrate dev --name $msg
 }

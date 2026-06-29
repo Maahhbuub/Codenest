@@ -11,7 +11,7 @@ matches:
 
   # Personal info
   - trigger: ":name"
-    replace: "Md. Mahbubur Rahman"
+    replace: "Mahbubur Rahman"
 
   - trigger: ":id"
     replace: "011221441"

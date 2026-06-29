@@ -1,10 +1,11 @@
 {
     "files.autoSave": "afterDelay",
     "editor.mouseWheelZoom": true,
-    "editor.fontSize": 19,
-    "terminal.integrated.fontSize": 18,
-    "editor.fontFamily": "cascadia code",
-    "editor.fontWeight": "bold",
+    "editor.fontSize": 18,
+    "terminal.integrated.fontSize": 17,
+    "editor.fontFamily": "Monaspace Xenon Frozen",
+    "editor.fontWeight": "600",
+    "editor.fontLigatures": true,
     "editor.stickyScroll.enabled": false,
     "editor.minimap.enabled": false,
     "editor.cursorBlinking": "expand",
@@ -16,24 +17,14 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "editor.formatOnPaste": true,
-    "editor.formatOnType": true,
-    "editor.formatOnSave": true,
+    "workbench.colorTheme": "Theme Darker",
     "editor.cursorSmoothCaretAnimation": "on",
-    "editor.cursorWidth": 3,
-    "editor.fontLigatures": true,
-    "redhat.telemetry.enabled": true,
-    "cSpell.userWords": [
-        "Mahbub",
-        "Tamanna"
-    ],
+    "cph.language.cpp.Args": "-std=c++23 -DLOCAL",
+    "github.copilot.nextEditSuggestions.enabled": true,
     "github.copilot.enable": {
         "*": false,
         "plaintext": false,
-        "markdown": true,
+        "markdown": false,
         "scminput": false
-    },
-    "explorer.confirmPasteNative": false,
-    "claudeCode.preferredLocation": "panel",
-    "chat.viewSessions.orientation": "stacked",
-    "workbench.colorTheme": "Theme Darker",
+    }
 }
